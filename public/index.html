@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+    <style>
+        body {
+            background-color: #313241;
+            color: #bfdaf9;
+        }
+  .ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+  }
+  .ctn2 {
+    display: flex;
+    flex-direction: row;
+    /* width: fit-content; */
+    justify-content: center;
+    /* align-items: center; */
+  }
+   input {
+    width: 20vw;
+    height: auto;
+    font-size: x-large;
+    font-family: monospace;
+    font-weight: bold;
+    border: 2px solid rgb(99, 71, 71);
+    color: red;
+  }
+  .btn {
+    padding: 5px;
+    font-size: larger;
+    margin: 5px;
+    background-color: black;
+    color: aqua;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .btn:hover {
+    position: relative;
+    bottom: 2px;
+    border-radius: 8px;
+    color: red;
+  }
+    </style>
+</head>
+<body>
+    <div class="ctn">
+    <h2>Add your mail to queue</h2>
+     </div>
+<div class="ctn2">
+    <input id="input" type="email" placeholder="Enter mail address here" required>
+    <button class="btn" id="btn">Add</button>
+    </div>
+    <script>
+        const add_queue = async () => {
+            const input = document.getElementById('input').value.trim();
+            if (!input) {
+               return alert("mail can't be empty")
+            }
+            const send = await fetch('/task', {
+                method: "POST",
+                body: JSON.stringify({tomail: input}),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            });
+            if (!send.ok) {
+         return alert("something went wrong")
+            }
+          const res = await send.json();
+          alert(`mail addres added to queue`)
+        }
+        document.getElementById('btn').addEventListener('click', add_queue)
+    </script>
+</body>
+</html>
