@@ -5,7 +5,7 @@ https://github.com/prajapati-satyam/prajapati-satyam-simple-mail-send-using-queu
 ```
 
 ```
-cd prajapati-satyam-simple-mail-send-using-queue-RabbitMq-
+cd simple-mail-send-using-queue-RabbitMq
 ```
 
 
