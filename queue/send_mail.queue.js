@@ -1,12 +1,13 @@
 const amqp = require('amqplib');
 const {Queue_map} = require('../utils/const')
+const {connection_config} = require('../connection/rabbit-mq.connect')
 
 const add_queue = async (tomail) => {
     if (!tomail) {
        throw new Error("to mail is requried")
     }
     try {
-        const connection = await amqp.connect('amqp://localhost');
+        const connection = await amqp.connect(connection_config);
         const channel = await connection.createChannel();
 
 

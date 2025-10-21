@@ -1,10 +1,11 @@
 const amqp = require('amqplib');
 const {Queue_map} = require('../utils/const')
 const {send_mail} = require('../utils/send_mail')
+const {connection_config} = require('../connection/rabbit-mq.connect')
 
 const send_mail_worker = async() => {
  try {
-    const connection = await amqp.connect("amqp://localhost");
+    const connection = await amqp.connect(connection_config);
     const channel = await connection.createChannel();
 
     await channel.assertQueue(Queue_map.task, {
