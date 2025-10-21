@@ -1,3 +1,18 @@
+## Run With docker
+
+```
+docker compose up
+```
+
+#### Just it , App is running on localhost
+
+```
+localhost:3000
+```
+
+##### ---- END ----
+
+## Run Without docker
 ### Follow the step
 
 ```
